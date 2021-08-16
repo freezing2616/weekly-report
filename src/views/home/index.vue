@@ -17,13 +17,10 @@ import Bmob from "hydrogen-js-sdk"
 import _ from 'lodash'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-// import { sendReport } from 'services'
+import { sendReport } from 'services'
 
 export default {
     name: 'Home',
-    props: {
-        msg: String
-    },
     components: {
         'mavon-editor': mavonEditor.mavonEditor
     },
@@ -55,13 +52,17 @@ export default {
                 this.$message.error('请输入周报内容')
                 return
             }
-
-            // sendReport({
-            //     "msgtype": "markdown",
-            //     "markdown": {
-            //         "content": '# 周报 \n ### ' + this.username + '\n' + this.content
-            //     }
-            // })
+            // console.log(window.location.origin)
+            // window.location.href = window.location.origin + '/record?name=' + this.username
+            // return
+            // eslint-disable-next-line no-unreachable
+            const res = `[${this.username}的周报](${window.location.origin}/record?name=${this.username}) \n ${this.content}`
+            sendReport({
+                "msgtype": "markdown",
+                "markdown": {
+                    "content": res
+                }
+            })
 
             this.saveData()
         }

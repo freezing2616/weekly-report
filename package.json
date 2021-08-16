@@ -14,7 +14,10 @@
     "hydrogen-js-sdk": "^2.2.4",
     "lodash": "^4.17.21",
     "mavon-editor": "^2.9.1",
-    "vue": "^2.6.11"
+    "query-string": "^7.0.1",
+    "vue": "^2.6.11",
+    "vue-markdown": "^2.2.4",
+    "vue-virtual-scroll-list": "^2.3.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
