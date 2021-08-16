@@ -13,9 +13,11 @@
 </template>
 
 <script>
+import Bmob from "hydrogen-js-sdk"
+import _ from 'lodash'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-import { sendReport } from 'services'
+// import { sendReport } from 'services'
 
 export default {
     name: 'Home',
@@ -33,15 +35,35 @@ export default {
     },
     methods: {
 
-        handleSubmit() {
-            // eslint-disable-next-line no-debugger
-            console.log(this.username, this.content)
-            sendReport({
-                "msgtype": "markdown",
-                "markdown": {
-                    "content": '# 周报 \n ### ' + this.username + '\n' + this.content
-                }
+        saveData() {
+            const query = Bmob.Query('report');
+            query.set("name", this.username)
+            query.set("content", this.content)
+            query.save().then(res => {
+                console.log('=====>', res)
+            }).catch(err => {
+                console.log('------>', err)
             })
+        },
+
+        handleSubmit() {
+            if (_.isEmpty(this.username)) {
+                this.$message.error('请选择用户名')
+                return
+            }
+            if (_.isEmpty(this.content)) {
+                this.$message.error('请输入周报内容')
+                return
+            }
+
+            // sendReport({
+            //     "msgtype": "markdown",
+            //     "markdown": {
+            //         "content": '# 周报 \n ### ' + this.username + '\n' + this.content
+            //     }
+            // })
+
+            this.saveData()
         }
     }
 }
