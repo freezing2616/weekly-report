@@ -11,7 +11,7 @@
             <rz-button size='large' @click="handleSubmit">提交</rz-button>
         </div>
         <mavon-editor v-model="content" />
-        <rz-dialog title="提示" :visible.sync="dialogVisible" body-padding width="30%" :before-close="handleClose" v-loading="loading">
+        <rz-dialog title="提示" :visible.sync="dialogVisible" body-padding width="30%" v-loading="loading">
             <vue-markdown class="row-item-content">{{ postMsg }}</vue-markdown>
             <span slot="footer" class="dialog-footer">
                 <rz-button type="info" @click="cancelSubmit">取 消</rz-button>
@@ -91,12 +91,14 @@ export default {
 
         async confirmSubmit() {
 
-            sendReport({
+            const res = await sendReport({
                 "msgtype": "markdown",
                 "markdown": {
                     "content": this.postMsg
                 }
             })
+
+            console.log(res)
 
             this.loading = true
             const err = await this.saveData()

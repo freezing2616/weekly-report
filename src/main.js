@@ -7,7 +7,14 @@ import Razor from '@sensetime/razor'
 // 引入样式
 import '@sensetime/razor/dist/lib/style/white/index.css'
 
-Bmob.initialize('86538450add29ed6', '40F024')
+if (process.env.NODE_ENV === 'development') {
+  Bmob.initialize('86538450add29ed6', '40F024') // 测试环境
+} else {
+  Bmob.initialize('e48734be9552512a', '40F024') // 生产环境
+}
+
+
+
 
 Vue.prototype.Bmob = Bmob
 
