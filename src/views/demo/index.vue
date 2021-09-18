@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import hookDemo from '../../utils/hooks.js'
+// import hookDemo from '../../utils/hooks.js'
 import 'mavon-editor/dist/css/index.css'
 
 export default {
@@ -11,7 +11,7 @@ export default {
     methods: {
 
         handleClick() {
-            hookDemo.onClick()
+            // hookDemo.onClick()
         }
     }
 }
