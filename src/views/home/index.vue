@@ -4,9 +4,8 @@
         <div class="manipulate">
             <rz-radio-group class='radio-view' v-model="username" size="large">
                 <rz-radio-button label="孟律"></rz-radio-button>
-                <rz-radio-button label="冉旸旸"></rz-radio-button>
-                <rz-radio-button label="张义辉"></rz-radio-button>
-                <rz-radio-button label="李峙昊"></rz-radio-button>
+                <rz-radio-button label="陈诚"></rz-radio-button>
+                <rz-radio-button label="李焕科"></rz-radio-button>
             </rz-radio-group>
             <rz-button size='large' @click="handleSubmit">提交</rz-button>
         </div>

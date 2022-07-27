@@ -3,9 +3,9 @@ import routes from './config/routes'
 
 import Bmob from "hydrogen-js-sdk"
 
-import Razor from '@sensetime/razor'
+import Sensed from '@sensetime/sensed-vue';
 // 引入样式
-import '@sensetime/razor/dist/lib/style/white/index.css'
+import '@sensetime/sensed-vue/dist/lib/style/white/index.css';
 
 if (process.env.NODE_ENV === 'development') {
   Bmob.initialize('86538450add29ed6', '40F024') // 测试环境
@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'development') {
 
 Vue.prototype.Bmob = Bmob
 
-Vue.use(Razor)
+Vue.use(Sensed)
 
 Vue.config.productionTip = false
 
